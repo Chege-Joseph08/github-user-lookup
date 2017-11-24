@@ -6,14 +6,14 @@ import { HttpModule } from '@angular/http'
 
 
 import { AppComponent } from './app.component';
-import { UserLookupComponent } from './user-lookup/user-lookup.component';
-import { UserLookupService } from './user-lookup.service';
+import { SearchUsersComponent } from './user-lookup/user-lookup.component';
+import { SearchUsersService } from './user-lookup.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserLookupComponent
+    SearchUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +21,7 @@ import { UserLookupService } from './user-lookup.service';
     HttpModule,
 
   ],
-  providers: [UserLookupService],
+  providers: [SearchUsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

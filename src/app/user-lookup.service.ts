@@ -5,22 +5,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UserLookupService {
+export class SearchUsersService {
 
-  private searchUsersEndPoint = "https://api.github.com/search/users?q=";
+
   private getUserDetailsEndPoint = "https://api.github.com/users/";
 
   constructor(private http: Http) { }
-  getusersByUserName (name: String){
-    let url;
-    if (name){
-    url = `${this.searchUsersEndPoint}username:${name}`;
-    }
-
-    return this.http.get(url)
-          .map(this.extractData)
-          .catch(this.handleError);
-      }
 
       getDetailsByUserName(username: string) {
         if (username) {

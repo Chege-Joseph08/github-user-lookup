@@ -1,15 +1,35 @@
 <div>
-<input placeholder="Github User Name" #name (keyup.enter)="search(name.value); name.value='';">
-  <button (click)="search(name.value); name.value='';" > Search </button>
+ <input placeholder="User Name" class="form-control input-lg input" #username (keyup.enter)="search(username.value); username.value='';" />
+ <button  (click)="getDetails(user.login)">Search</button>
 </div>
-<p style="color:red;" *ngIf="error_text">{{ error_text }}</p>
-<div>
-<div *ngFor="let user of results">
-    <div>
-      <img src="{{user.avatar_url}}" width="100" height="100">
+<div class="details_container">
+          <a href="{{user.html_url}}" target="_blank" class="login_name">{{ user.login }}</a>
+        </div>
+
+    <div *ngIf="results.length && selected" class="col-md-3">
+
+      <div class="box text-center">
+        <img src="{{selectedUser.avatar_url}}" class="img-responsive img-circle">
+        <div class="details">
+          <div *ngIf="selectedUser.name"><a href="{{ selectedUser.html_url }}" target="_blank"><h3>{{ selectedUser.name }} </h3></a></div>
+          <hr>
+          <div *ngIf="selectedUser.email">Email: {{ selectedUser.email }}</div>
+          <hr>
+          <div *ngIf="selectedUser.location">Location: {{ selectedUser.location }}</div>
+          <hr>
+          <div *ngIf="selectedUser.bio">Bio: {{ selectedUser.bio }}</div>
+          <hr>
+          <div *ngIf="selectedUser.updated_at">Last Seen: {{ selectedUser.updated_at | date }}</div>
+          <hr>
+          <div *ngIf="selectedUser.public_repos">Repos: {{ selectedUser.public_repos }}</div>
+          <hr>
+          <div *ngIf="selectedUser.public_gists">Gists: {{ selectedUser.public_gists }}</div>
+          <hr>
+          <div *ngIf="selectedUser.followers">Followers: {{ selectedUser.followers }}</div>
+          <hr>
+          <div *ngIf="selectedUser.created_at">Joined github: {{ selectedUser.created_at | date }}</div>
+          <hr>
+          <button class="btn btn-sm btn-warning" (click)="selected = !selected">Back</button>
+        </div>
+      </div>
     </div>
-    <div>
-      <a href="{{user.html_url}}">{{ user.login }}</a>
-    </div>
-  </div>
-</div>
