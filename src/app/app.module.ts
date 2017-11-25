@@ -1,27 +1,14 @@
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http'
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
-
-
-import { AppComponent } from './app.component';
-import { SearchUsersComponent } from './user-lookup/user-lookup.component';
-import { SearchUsersService } from './user-lookup.service';
-
+import { AppComponent }  from './app.component';
+import {GithubComponent} from './github/github.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchUsersComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-
-  ],
-  providers: [SearchUsersService],
-  bootstrap: [AppComponent]
+  imports: [ BrowserModule, HttpModule, FormsModule ],
+  declarations: [ AppComponent, GithubComponent ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
